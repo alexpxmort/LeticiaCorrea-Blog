@@ -1,13 +1,10 @@
 import { Box, Container, Flex, Grid, Image, Text, Link, Heading } from '@chakra-ui/react';
-import { useMediaQuery } from 'react-responsive';
 
 const instaLink = 'https://www.instagram.com/letiiiciacorrea/';
 const AppLayout: React.FC = ({ children }) => {
-  const isMobile = useMediaQuery({ maxWidth: 767 });
-
   return (
     <Flex direction="column" minH="100vh">
-      <Box as="header" color="white" p={4} textAlign="center" bg="#EDEDED" w={isMobile ? '200vh' : 'auto'}>
+      <Box as="header" color="white" p={4} textAlign="center" bg="#EDEDED">
         {/* Conteúdo do Cabeçalho */}
         <Container maxWidth="container.md">
           <Link href={'/'}>
@@ -39,7 +36,7 @@ const AppLayout: React.FC = ({ children }) => {
           </Grid>
         </Container>
       </Box>
-      <Box as="footer" color="white" p={8} bg="#EDEDED" textAlign="center" w={isMobile ? '200vh' : 'auto'}>
+      <Box as="footer" color="white" p={8} bg="#EDEDED" textAlign="center">
         <Container maxWidth="container.xl" ml="2rem">
           <Flex direction={'row'} justifyContent={'flex-start'}>
             <Flex direction={'column'}>
