@@ -1,3 +1,4 @@
+// pages/index.tsx
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
@@ -27,10 +28,13 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="p-4 space-y-4">
-        {recipes.map(recipe => (
-          <RecipeCard key={recipe.id} recipe={recipe} />
-        ))}
+      {/* Set padding on the body element for mobile spacing */}
+      <div className="p-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {recipes.map(recipe => (
+            <RecipeCard key={recipe.id} recipe={recipe} />
+          ))}
+        </div>
       </div>
     </>
   );
