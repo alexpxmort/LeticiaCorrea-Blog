@@ -3,7 +3,7 @@ import { Link } from '@chakra-ui/react';
 const instaLink = 'https://www.instagram.com/cozinhasaudaveldaleticia/';
 
 const Header = () => (
-  <header className="text-white p-4 text-center bg-gray-200">
+  <header className="h-full text-white p-4 text-center bg-gray-200">
     <div className="container mx-auto">
       <div className="flex flex-col items-center">
         <div className="mb-4">
