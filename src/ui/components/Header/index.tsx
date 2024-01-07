@@ -1,6 +1,6 @@
 import { Link } from '@chakra-ui/react';
 
-const instaLink = 'https://www.instagram.com/letiiiciacorrea/';
+const instaLink = 'https://www.instagram.com/cozinhasaudaveldaleticia/';
 
 const Header = () => (
   <header className="text-white p-4 text-center bg-gray-200">
