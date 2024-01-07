@@ -21,7 +21,7 @@ const NewRecipePage = () => {
     reset,
     formState: { errors }
   } = useForm<Recipe>({
-    resolver: yupResolver(schema)
+    resolver: yupResolver<yup.AnyObject>(schema)
   });
 
   const [loading, setLoading] = useState(false);
