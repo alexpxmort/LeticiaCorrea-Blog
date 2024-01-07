@@ -7,7 +7,7 @@ const RecipeCard = ({ recipe }) => {
   return (
     <Link href={`/receitas/${id}`} _hover={{ textDecoration: 'none' }}>
       <Box
-        maxW="sm"
+        width="100%" // Set width to 100% for full width
         borderWidth="1px"
         borderRadius="lg"
         overflow="hidden"
