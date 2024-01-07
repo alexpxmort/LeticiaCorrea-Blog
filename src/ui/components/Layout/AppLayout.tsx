@@ -7,7 +7,7 @@ const MainContent = ({ children }) => (
   <div className="flex-1">
     <div className="container mx-auto pt-8">
       {/* Adjust the grid to a single column on small screens */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">{children}</div>
+      <div className="grid grid-cols-1 gap-6">{children}</div>
     </div>
   </div>
 );
