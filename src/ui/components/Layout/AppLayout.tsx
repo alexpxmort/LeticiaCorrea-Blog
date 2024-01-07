@@ -1,13 +1,13 @@
+// components/AppLayout.js
 import Header from '../Header';
-
-
 
 const instaLink = 'https://www.instagram.com/cozinhasaudaveldaleticia/';
 
 const MainContent = ({ children }) => (
   <div className="flex-1">
     <div className="container mx-auto pt-8">
-      <div className="grid grid-cols-3 gap-6">{children}</div>
+      {/* Adjust the grid to a single column on small screens */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">{children}</div>
     </div>
   </div>
 );
@@ -15,8 +15,8 @@ const MainContent = ({ children }) => (
 const Footer = () => (
   <footer className="text-white p-8 bg-gray-200 text-center">
     <div className="container mx-auto ml-2">
-      <div className="flex flex-row">
-        <div className="flex flex-col">
+      <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col md:flex-row items-center">
           <a href={instaLink} target="_blank" rel="noreferrer">
             <img
               alt="Instagram"
@@ -25,7 +25,7 @@ const Footer = () => (
             />
           </a>
           <a href="mailto:letcorrea95@outlook.com?subject=Oi Seja Mais Nutritiva" target="_blank" rel="noreferrer">
-            <p className="text-green-600 font-bold text-md" style={{ color: '#417162' }}>
+            <p className="text-green-600 font-bold text-md md:ml-2" style={{ color: '#417162' }}>
               Contato
             </p>
           </a>
