@@ -1,27 +1,29 @@
 // components/RecipeCard.js
-import { Card, CardHeader, CardBody, CardFooter, Image, Text, Link, Stack, Heading } from '@chakra-ui/react';
+import { Card, CardHeader, CardBody, Stack, Box, Heading, Text, StackDivider, Image } from '@chakra-ui/react';
 
 const RecipeCard = ({ recipe }) => {
   const { id, title, image, description } = recipe;
 
   return (
-    <Link href={`/receitas/${id}`} _hover={{ textDecoration: 'none' }}>
-      <Card maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md" mb={8} mx="auto">
-        <CardHeader>
-          <Image src={image} alt={title} objectFit="cover" boxSize="full" />
-        </CardHeader>
-        <Stack p={4}>
-          <Heading as="h2" size="md" color={'#555'} mb={2}>
-            {title}
-          </Heading>
-          <CardBody>
-            <Text fontSize="md" color={'#333'}>
+    <Card maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md" mb={8} mx="auto">
+      <CardHeader>
+        <Image src={image} alt={title} objectFit="cover" boxSize="full" />
+        
+      </CardHeader>
+      <CardBody>
+        <Stack divider={<StackDivider />} spacing='4'>
+       <Heading size='md' pt='2'>
+          {title}
+        </Heading>
+          <Box>
+            <Text fontSize='sm'>
               {description}
             </Text>
-          </CardBody>
+          </Box>
+          {/* Add more Box components as needed */}
         </Stack>
-      </Card>
-    </Link>
+      </CardBody>
+    </Card>
   );
 };
 
