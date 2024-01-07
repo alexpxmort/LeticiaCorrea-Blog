@@ -18,7 +18,7 @@
     "@chakra-ui/react": "^1.7.3",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
-    "@hookform/resolvers": "^3.3.4",
+    "@hookform/resolvers": "^2.9.0",
     "axios": "^0.24.0",
     "date-fns": "^2.28.0",
     "framer-motion": "^4",
