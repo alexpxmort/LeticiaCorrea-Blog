@@ -4,7 +4,7 @@ const instaLink = 'https://www.instagram.com/cozinhasaudaveldaleticia/';
 
 const Header = () => (
   <header className="h-full text-white p-4 text-center bg-gray-200">
-    <div className="mx-auto w-full">
+    <div className="container mx-0">
       <div className="flex flex-col items-center">
         <div className="mb-4">
           {/* Seu conteúdo esquerdo do header */}
