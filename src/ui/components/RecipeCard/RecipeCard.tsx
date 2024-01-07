@@ -1,29 +1,17 @@
 // components/RecipeCard.js
-import { Box, Heading, Text, Link, VStack, Image } from '@chakra-ui/react';
-
 const RecipeCard = ({ recipe }) => {
   const { id, title, image, description } = recipe;
 
   return (
-    <Link href={`/receitas/${id}`} _hover={{ textDecoration: 'none' }}>
-      <Box
-        width="100%" // Set width to 100% for full width
-        borderWidth="1px"
-        borderRadius="lg"
-        overflow="hidden"
-        boxShadow="md"
-        mb={8}
-        mx="auto"
-      >
-        <Image src={image} alt={title} objectFit="cover" boxSize="full" />
-        <VStack p={4} align="start">
-          <Heading as="h2" size="md">
-            {title}
-          </Heading>
-          <Text fontSize="sm">{description}</Text>
-        </VStack>
-      </Box>
-    </Link>
+    <a href={`/receitas/${id}`} className="hover:no-underline">
+      <div className="w-full border-1 border-gray-300 rounded-lg overflow-hidden shadow-md mb-8 mx-auto">
+        <img src={image} alt={title} className="object-cover w-full h-64" />
+        <div className="p-4">
+          <h2 className="text-lg font-medium">{title}</h2>
+          <p className="text-sm">{description}</p>
+        </div>
+      </div>
+    </a>
   );
 };
 
