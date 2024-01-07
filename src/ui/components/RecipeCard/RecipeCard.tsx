@@ -9,7 +9,7 @@ const RecipeCard = ({ recipe }) => {
       <Card maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" boxShadow="md" mb={8} mx="auto">
         <Image src={image} alt={title} objectFit="cover" boxSize="full" />
         <Stack p={4}>
-          <Heading as="h2" size="md" color={'#555'}>
+          <Heading as="h2" size="md" color={'#555'} mb={2}>
             {title}
           </Heading>
           <Text fontSize="md" color={'#333'}>
