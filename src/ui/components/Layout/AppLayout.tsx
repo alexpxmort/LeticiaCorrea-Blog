@@ -1,6 +1,8 @@
 import Header from '../Header';
 
-const instaLink = 'https://www.instagram.com/letiiiciacorrea/';
+
+
+const instaLink = 'https://www.instagram.com/cozinhasaudaveldaleticia/';
 
 const MainContent = ({ children }) => (
   <div className="flex-1">
