@@ -1,8 +1,11 @@
-// _app.tsx
-import { ChakraProvider } from '@chakra-ui/react';
+import '../../styles/global.css';
+
 import type { AppProps } from 'next/app';
 import { useEffect } from 'react';
+
+import { ChakraProvider } from '@chakra-ui/react';
 import { theme } from '@ui/styles/theme';
+
 import AppLayout from 'src/ui/components/Layout/AppLayout';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {

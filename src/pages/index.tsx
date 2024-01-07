@@ -1,8 +1,5 @@
-// pages/index.tsx
 import type { NextPage } from 'next';
 import Head from 'next/head';
-
-import { Box, Grid, GridItem } from '@chakra-ui/react';
 
 import RecipeCard from 'src/ui/components/RecipeCard/RecipeCard';
 
@@ -30,19 +27,11 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Box>
-        <Grid
-          templateRows="repeat(auto-fill, minmax(200px, 1fr))" // Ajuste conforme necessário
-          gap={4}
-          ml="4rem" // Adiciona um espaçamento à esquerda para compensar o GridItem
-        >
-          {recipes.map(recipe => (
-            <GridItem key={recipe.id}>
-              <RecipeCard recipe={recipe} />
-            </GridItem>
-          ))}
-        </Grid>
-      </Box>
+      <div className="p-4 space-y-4">
+        {recipes.map(recipe => (
+          <RecipeCard key={recipe.id} recipe={recipe} />
+        ))}
+      </div>
     </>
   );
 };
