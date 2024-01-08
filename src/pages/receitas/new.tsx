@@ -51,7 +51,8 @@ const NewRecipePage = () => {
         <h3 className="text-2xl font-bold mb-4">Cadastre aqui sua Receita</h3>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-         <label for="uploadFile1"
+        /* eslint-disable max-len */ 
+          <label for="uploadFile1"
   className="bg-gray-800 hover:bg-gray-700 text-white text-sm px-4 py-2.5 outline-none rounded w-max cursor-pointer mx-auto block font-[sans-serif]">
   <svg xmlns="http://www.w3.org/2000/svg" className="w-5 mr-2 fill-white inline" viewBox="0 0 32 32">
     <path
