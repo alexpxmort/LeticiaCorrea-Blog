@@ -13,7 +13,8 @@ import { Link } from '@chakra-ui/react';
 
 const schema = yup.object().shape({
   name: yup.string().required('O nome é obrigatório'),
-  description: yup.string().required('A descrição é obrigatória')
+  description: yup.string().required('A descrição é obrigatória'), 
+  image: yup.string().required('A imagem é obrigatória')
 });
 
 const NewRecipePage = () => {
@@ -28,7 +29,9 @@ const NewRecipePage = () => {
 
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<{ type: string; content: string } | null>(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
+  
   const onSubmit = async (data: Recipe) => {
     setLoading(true);
     // Aqui você pode enviar os dados do formulário para o backend
@@ -46,6 +49,13 @@ const NewRecipePage = () => {
       setMessage({ type: 'error', content: err.message });
     }
   };
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => { const file = e.target.files?.[0]; if (file) {
+    setSelectedImage(file.name); 
+    setValue('image', file.name);
+  }
+                                                                        
+                                                                        };
 
   return (
     <div className="h-screen flex items-center justify-center">
@@ -67,6 +77,7 @@ const NewRecipePage = () => {
   Upload
   <input type="file" id='uploadFile1' className="hidden" />
 </label>
+          {selectedImage && <p className="text-gray-500 mt-1">{selectedImage}</p>}
           <div className="mb-4">
             <label htmlFor="title" className="block text-sm font-medium text-gray-600">
               Nome
