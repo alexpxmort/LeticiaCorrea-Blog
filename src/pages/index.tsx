@@ -3,13 +3,7 @@ import type { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
 import { recipeApi } from '@services/RecipeFetchApi';
 import RecipeCard from 'src/ui/components/RecipeCard/RecipeCard';
-
-interface Recipe {
-  id: string;
-  title: string;
-  image: string;
-  description: string;
-}
+import { Recipe } from 'src/domain/entities/recipes/Recipe'; // Adjust the path based on your project structure
 
 interface HomeProps {
   recipes: Recipe[];
@@ -67,9 +61,7 @@ export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
   } catch (error) {
     console.error('Error fetching recipes:', error);
     return {
-      props: {
-        recipes: [],
-      },
+      notFound: true,
     };
   }
 };
