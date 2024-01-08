@@ -75,7 +75,9 @@ const NewRecipePage = () => {
       data-original="#000000" />
   </svg>
   Upload
-  <input type="file" id='uploadFile1' className="hidden" />
+  <input type="file" id='uploadFile1' className="hidden" 
+    onChange={handleImageChange}
+    />
 </label>
           {selectedImage && <p className="text-gray-500 mt-1">{selectedImage}</p>}
           <div className="mb-4">
