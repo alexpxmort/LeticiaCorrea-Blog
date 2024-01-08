@@ -3,7 +3,7 @@ import type { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
 import { recipeApi } from '@services/RecipeFetchApi';
 import RecipeCard from 'src/ui/components/RecipeCard/RecipeCard';
-import { Recipe } from 'src/domains/entities/recipes/Recipe'; // Adjust the path based on your project structure
+import { Recipe } from 'src/domains/recipes/entities/Recipe'; // Adjust the path based on your project structure
 
 interface HomeProps {
   recipes: Recipe[];
