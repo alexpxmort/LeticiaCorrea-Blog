@@ -48,8 +48,6 @@ const Home: React.FC<HomeProps> = ({ originalRecipes }) => {
           ))}
         </div>
       </div>
-
-      <button onClick={fetchAdditionalRecipes}>Reload Recipes</button>
     </>
   );
 };
