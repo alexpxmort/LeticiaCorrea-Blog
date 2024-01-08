@@ -37,32 +37,41 @@ const Home: NextPage<HomeProps> = ({ recipes }) => {
 };
 
 export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
-  // Fetch additional recipes from your API using recipeApi
-  const additionalRecipes = await recipeApi.getAllRecipes();
+  try {
+    // Fetch all recipes from your API using recipeApi
+    const allRecipes = await recipeApi.getAllRecipes();
 
-  // Combine the original recipes with the additional ones
-  const originalRecipes: Recipe[] = [
-    {
-      id: 'bolo-chocolate',
-      title: 'Bolo de Chocolate',
-      image: '/images/bolo-de-chocolate.jpeg',
-      description: 'Delicioso bolo de chocolate para satisfazer seus desejos.',
-    },
-    {
-      id: 'lasanha',
-      title: 'Lasanha',
-      image: '/images/lasanha.jpeg',
-      description: 'Deliciosa lasanha',
-    },
-  ];
+    // Combine the original recipes with the fetched ones
+    const originalRecipes: Recipe[] = [
+      {
+        id: 'bolo-chocolate',
+        title: 'Bolo de Chocolate',
+        image: '/images/bolo-de-chocolate.jpeg',
+        description: 'Delicioso bolo de chocolate para satisfazer seus desejos.',
+      },
+      {
+        id: 'lasanha',
+        title: 'Lasanha',
+        image: '/images/lasanha.jpeg',
+        description: 'Deliciosa lasanha',
+      },
+    ];
 
-  const recipes = [...originalRecipes, ...additionalRecipes];
+    const recipes = [...originalRecipes, ...allRecipes];
 
-  return {
-    props: {
-      recipes,
-    },
-  };
+    return {
+      props: {
+        recipes,
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching recipes:', error);
+    return {
+      props: {
+        recipes: [],
+      },
+    };
+  }
 };
 
 export default Home;
