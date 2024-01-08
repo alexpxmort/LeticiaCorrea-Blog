@@ -16,3 +16,4 @@ export const jsonConfig = {
 } as any;
 
 export const DB_URL = 'https://rosaryseven.firebaseio.com';
+export const BUCKET_NAME = 'rosaryseven.appspot.com';

@@ -1,9 +1,11 @@
 // pages/index.tsx
-import { useEffect, useState } from 'react';
 import Head from 'next/head';
+import { useEffect, useState } from 'react';
+
 import { recipeApi } from '@services/RecipeFetchApi';
-import RecipeCard from 'src/ui/components/RecipeCard/RecipeCard';
+
 import { Recipe } from 'src/domains/recipes/entities/Recipe'; // Adjust the path based on your project structure
+import RecipeCard from 'src/ui/components/RecipeCard/RecipeCard';
 
 interface HomeProps {
   originalRecipes: Recipe[];
@@ -59,15 +61,15 @@ Home.defaultProps = {
       id: 'bolo-chocolate',
       name: 'Bolo de Chocolate',
       image: '/images/bolo-de-chocolate.jpeg',
-      description: 'Delicioso bolo de chocolate para satisfazer seus desejos.',
+      description: 'Delicioso bolo de chocolate para satisfazer seus desejos.'
     },
     {
       id: 'lasanha',
       name: 'Lasanha',
       image: '/images/lasanha.jpeg',
-      description: 'Deliciosa lasanha',
-    },
-  ],
+      description: 'Deliciosa lasanha'
+    }
+  ]
 };
 
 export default Home;

@@ -13,12 +13,16 @@ class RecipeFetchApi {
   }
 
   async createRecipe(recipeData: Recipe): Promise<string> {
+    const formData = new FormData();
+
+    // Adicione os campos do Recipe ao FormData
+    Object.keys(recipeData).forEach(key => {
+      formData.append(key, recipeData[key]);
+    });
+
     const response = await fetch(`${this.baseUrl}`, {
-      headers: {
-        'Content-Type': 'application/json'
-      },
       method: 'POST',
-      body: JSON.stringify(recipeData)
+      body: formData
     });
 
     if (!response.ok) {

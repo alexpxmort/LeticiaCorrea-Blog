@@ -1,4 +1,4 @@
-import { db } from '../../../infrastructure/firebase';
+import { bucket, db } from '../../../infrastructure/firebase';
 import { Recipe } from '../entities/Recipe';
 export interface IRecipeRepository {
   getAllRecipes(): Promise<Recipe[]>;
@@ -14,9 +14,34 @@ export class RecipeRepository implements IRecipeRepository {
     return snapshot.docs.map(doc => ({ id: doc.id, ...(doc.data() as Recipe) }));
   }
 
-  async createRecipe(data: Recipe): Promise<string> {
-    const docRef = await db.collection(this.collectionName).add(data);
-    return docRef.id;
+  async createRecipe(data: Recipe): Promise<any> {
+    const destination = `images/${data.image?.name}`; // Nome da imagem baseado no título (ajuste conforme necessário)
+    try {
+      const file = bucket.file(destination);
+      const stream = file.createWriteStream({
+        metadata: {
+          contentType: data.image?.type
+        }
+      });
+
+      stream.end(data?.image?.buffer);
+
+      // Aguarda o término do upload
+      await new Promise((resolve, reject) => {
+        stream.on('finish', resolve);
+        stream.on('error', reject);
+      });
+
+      // Obter a URL da imagem no Firebase Storage
+      const [url] = await file.getSignedUrl({ action: 'read', expires: '03-09-2491' });
+
+      const updatedData = { ...data, image: url };
+
+      const docRef = await db.collection(this.collectionName).add(updatedData);
+      return docRef.id;
+    } catch (err: any) {
+      console.log(err.message);
+    }
   }
 
   async updateRecipe(id: string, data: Partial<Recipe>): Promise<void> {

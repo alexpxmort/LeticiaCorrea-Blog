@@ -1,20 +1,24 @@
-
 /* eslint-disable max-len */
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
+import { Link } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { recipeApi } from '@services/RecipeFetchApi';
+import LoadingSpinner from '@ui/components/Spinner';
 import * as yup from 'yup';
 
 import { Recipe } from 'src/domains/recipes/entities/Recipe';
-import LoadingSpinner from '@ui/components/Spinner';
-import { Link } from '@chakra-ui/react';
 
 const schema = yup.object().shape({
   name: yup.string().required('O nome é obrigatório'),
-  description: yup.string().required('A descrição é obrigatória'), 
-  image: yup.string().required('A imagem é obrigatória')
+  description: yup.string().required('A descrição é obrigatória'),
+  image: yup
+    .mixed()
+    .required('A imagem é obrigatória')
+    .test('fileFormat', 'Formato de arquivo inválido', (value: any) => {
+      return value && ['image/jpeg', 'image/png', 'image/gif'].includes(value.type);
+    })
 });
 
 const NewRecipePage = () => {
@@ -32,7 +36,6 @@ const NewRecipePage = () => {
   const [message, setMessage] = useState<{ type: string; content: string } | null>(null);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  
   const onSubmit = async (data: Recipe) => {
     setLoading(true);
     // Aqui você pode enviar os dados do formulário para o backend
@@ -51,12 +54,13 @@ const NewRecipePage = () => {
     }
   };
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => { const file = e.target.files?.[0]; if (file) {
-    setSelectedImage(file.name); 
-    setValue('image', file.name);
-  }
-                                                                        
-                                                                        };
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setSelectedImage(file.name);
+      setValue('image', file);
+    }
+  };
 
   return (
     <div className="h-screen flex items-center justify-center">
@@ -64,22 +68,23 @@ const NewRecipePage = () => {
         <h3 className="text-2xl font-bold mb-4">Cadastre aqui sua Receita</h3>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-        
-          <label for="uploadFile1"
-  className="bg-gray-800 hover:bg-gray-700 text-white text-sm px-4 py-2.5 outline-none rounded w-max cursor-pointer mx-auto block font-[sans-serif]">
-  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 mr-2 fill-white inline" viewBox="0 0 32 32">
-    <path
-      d="M23.75 11.044a7.99 7.99 0 0 0-15.5-.009A8 8 0 0 0 9 27h3a1 1 0 0 0 0-2H9a6 6 0 0 1-.035-12 1.038 1.038 0 0 0 1.1-.854 5.991 5.991 0 0 1 11.862 0A1.08 1.08 0 0 0 23 13a6 6 0 0 1 0 12h-3a1 1 0 0 0 0 2h3a8 8 0 0 0 .75-15.956z"
-      data-original="#000000" />
-    <path
-      d="M20.293 19.707a1 1 0 0 0 1.414-1.414l-5-5a1 1 0 0 0-1.414 0l-5 5a1 1 0 0 0 1.414 1.414L15 16.414V29a1 1 0 0 0 2 0V16.414z"
-      data-original="#000000" />
-  </svg>
-  Upload
-  <input type="file" id='uploadFile1' className="hidden" 
-    onChange={handleImageChange}
-    />
-</label>
+          <label
+            htmlFor="uploadFile1"
+            className="bg-gray-800 hover:bg-gray-700 text-white text-sm px-4 py-2.5 outline-none rounded w-max cursor-pointer mx-auto block font-[sans-serif]"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 mr-2 fill-white inline" viewBox="0 0 32 32">
+              <path
+                d="M23.75 11.044a7.99 7.99 0 0 0-15.5-.009A8 8 0 0 0 9 27h3a1 1 0 0 0 0-2H9a6 6 0 0 1-.035-12 1.038 1.038 0 0 0 1.1-.854 5.991 5.991 0 0 1 11.862 0A1.08 1.08 0 0 0 23 13a6 6 0 0 1 0 12h-3a1 1 0 0 0 0 2h3a8 8 0 0 0 .75-15.956z"
+                data-original="#000000"
+              />
+              <path
+                d="M20.293 19.707a1 1 0 0 0 1.414-1.414l-5-5a1 1 0 0 0-1.414 0l-5 5a1 1 0 0 0 1.414 1.414L15 16.414V29a1 1 0 0 0 2 0V16.414z"
+                data-original="#000000"
+              />
+            </svg>
+            Upload
+            <input type="file" id="uploadFile1" className="hidden" onChange={handleImageChange} />
+          </label>
           {selectedImage && <p className="text-gray-500 mt-1">{selectedImage}</p>}
           <div className="mb-4">
             <label htmlFor="title" className="block text-sm font-medium text-gray-600">
