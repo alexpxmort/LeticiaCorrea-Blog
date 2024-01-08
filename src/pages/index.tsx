@@ -1,7 +1,7 @@
 // pages/index.tsx
 import type { NextPage } from 'next';
 import Head from 'next/head';
-
+import { recipeApi } from '@services/RecipeFetchApi';
 import RecipeCard from 'src/ui/components/RecipeCard/RecipeCard';
 
 const recipes: any[] = [
