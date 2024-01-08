@@ -38,7 +38,7 @@ const Home: NextPage<HomeProps> = ({ recipes }) => {
 
 export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
   // Fetch additional recipes from your API using recipeApi
-  const additionalRecipes = await recipeApi.getRecipes();
+  const additionalRecipes = await recipeApi.getAllRecipes();
 
   // Combine the original recipes with the additional ones
   const originalRecipes: Recipe[] = [
