@@ -22,6 +22,7 @@ const NewRecipePage = () => {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors }
   } = useForm<Recipe>({
     resolver: yupResolver<yup.AnyObject>(schema)
