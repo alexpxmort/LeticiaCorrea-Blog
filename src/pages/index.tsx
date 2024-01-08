@@ -1,25 +1,21 @@
 // pages/index.tsx
-import type { NextPage } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 import Head from 'next/head';
 import { recipeApi } from '@services/RecipeFetchApi';
 import RecipeCard from 'src/ui/components/RecipeCard/RecipeCard';
 
-const recipes: any[] = [
-  {
-    id: 'bolo-chocolate',
-    title: 'Bolo de Chocolate',
-    image: '/images/bolo-de-chocolate.jpeg',
-    description: 'Delicioso bolo de chocolate para satisfazer seus desejos.'
-  },
-  {
-    id: 'lasanha',
-    title: 'Lasanha',
-    image: '/images/lasanha.jpeg',
-    description: 'Deliciosa lasanha'
-  }
-];
+interface Recipe {
+  id: string;
+  title: string;
+  image: string;
+  description: string;
+}
 
-const Home: NextPage = () => {
+interface HomeProps {
+  recipes: Recipe[];
+}
+
+const Home: NextPage<HomeProps> = ({ recipes }) => {
   return (
     <>
       <Head>
@@ -38,6 +34,35 @@ const Home: NextPage = () => {
       </div>
     </>
   );
+};
+
+export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
+  // Fetch additional recipes from your API using recipeApi
+  const additionalRecipes = await recipeApi.getRecipes();
+
+  // Combine the original recipes with the additional ones
+  const originalRecipes: Recipe[] = [
+    {
+      id: 'bolo-chocolate',
+      title: 'Bolo de Chocolate',
+      image: '/images/bolo-de-chocolate.jpeg',
+      description: 'Delicioso bolo de chocolate para satisfazer seus desejos.',
+    },
+    {
+      id: 'lasanha',
+      title: 'Lasanha',
+      image: '/images/lasanha.jpeg',
+      description: 'Deliciosa lasanha',
+    },
+  ];
+
+  const recipes = [...originalRecipes, ...additionalRecipes];
+
+  return {
+    props: {
+      recipes,
+    },
+  };
 };
 
 export default Home;
