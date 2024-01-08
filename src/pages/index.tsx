@@ -1,5 +1,5 @@
 // pages/index.tsx
-import type { GetServerSideProps, NextPage } from 'next';
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { recipeApi } from '@services/RecipeFetchApi';
 import RecipeCard from 'src/ui/components/RecipeCard/RecipeCard';
@@ -9,7 +9,27 @@ interface HomeProps {
   recipes: Recipe[];
 }
 
-const Home: NextPage<HomeProps> = ({ recipes }) => {
+const Home: React.FC<HomeProps> = ({ recipes }) => {
+  const [allRecipes, setAllRecipes] = useState<Recipe[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Fetch additional recipes from your API using recipeApi
+        const additionalRecipes = await recipeApi.getAllRecipes();
+        setAllRecipes(additionalRecipes);
+      } catch (error) {
+        console.error('Error fetching additional recipes:', error);
+        // Handle error if necessary
+      }
+    };
+
+    // Call the fetchData function
+    fetchData();
+  }, []); // Empty dependency array ensures the effect runs once after the initial render
+
+  const combinedRecipes = [...recipes, ...allRecipes];
+
   return (
     <>
       <Head>
@@ -21,7 +41,7 @@ const Home: NextPage<HomeProps> = ({ recipes }) => {
       {/* Set padding on the body element for mobile spacing */}
       <div className="p-4">
         <div className="grid grid-cols-1 gap-4">
-          {recipes.map(recipe => (
+          {combinedRecipes.map(recipe => (
             <RecipeCard key={recipe.id} recipe={recipe} />
           ))}
         </div>
@@ -30,40 +50,10 @@ const Home: NextPage<HomeProps> = ({ recipes }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
-  try {
-    // Fetch all recipes from your API using recipeApi
-    const allRecipes = await recipeApi.getAllRecipes();
-
-    // Combine the original recipes with the fetched ones
-    const originalRecipes: Recipe[] = [
-      {
-        id: 'bolo-chocolate',
-        name: 'Bolo de Chocolate',
-        image: '/images/bolo-de-chocolate.jpeg',
-        description: 'Delicioso bolo de chocolate para satisfazer seus desejos.',
-      },
-      {
-        id: 'lasanha',
-        name: 'Lasanha',
-        image: '/images/lasanha.jpeg',
-        description: 'Deliciosa lasanha',
-      },
-    ];
-
-    const recipes = [...originalRecipes, ...allRecipes];
-
-    return {
-      props: {
-        recipes,
-      },
-    };
-  } catch (error) {
-    console.error('Error fetching recipes:', error);
-    return {
-      notFound: true,
-    };
-  }
+Home.defaultProps = {
+  recipes: [
+    // Initial recipes here
+  ],
 };
 
 export default Home;
