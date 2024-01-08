@@ -39,13 +39,13 @@ export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
     const originalRecipes: Recipe[] = [
       {
         id: 'bolo-chocolate',
-        title: 'Bolo de Chocolate',
+        name: 'Bolo de Chocolate',
         image: '/images/bolo-de-chocolate.jpeg',
         description: 'Delicioso bolo de chocolate para satisfazer seus desejos.',
       },
       {
         id: 'lasanha',
-        title: 'Lasanha',
+        name: 'Lasanha',
         image: '/images/lasanha.jpeg',
         description: 'Deliciosa lasanha',
       },
