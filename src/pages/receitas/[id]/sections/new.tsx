@@ -289,7 +289,7 @@ const NewRecipePage = () => {
       >
         Salvar
       </button>
-      {message && <div className={`${message.type}-message mb-4`}>{message.content}
+      {message && <div className={`${message.type}-message mb-4`}>{message.content}</div>}
 
       {loading && <LoadingSpinner />}
     </div>
