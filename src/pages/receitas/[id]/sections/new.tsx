@@ -81,7 +81,7 @@ const NewRecipePage = () => {
       setTimeout(() => {
         setMessage(null);
       }, 1800);
-    } catch (err) {
+    } catch (err:any) {
       setLoading(false);
       setMessage({ type: 'error', content: err.message });
     }
