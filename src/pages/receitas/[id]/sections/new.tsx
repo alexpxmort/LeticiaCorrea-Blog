@@ -29,7 +29,7 @@ const NewRecipePage = () => {
     ]);
   };
 
-  const getRecipe = async (id: string) => {
+  const getRecipe = async (id:string | string[] ) => {
     const result = await recipeApi.getRecipe(id);
     setRecipe(result);
     setLoadingGet(false);
