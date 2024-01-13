@@ -161,8 +161,8 @@ const NewRecipePage = () => {
                   onChange={e => handleInputChange(sectionIndex, 'hasSubsections', e.target.value === 'true')}
                   className="mt-1 p-2 w-full border rounded-md"
                 >
-                  <option value={true}>Sim</option>
-                  <option value={false}>Não</option>
+                  <option value={"true"}>Sim</option>
+                  <option value={"false"}>Não</option>
                 </select>
               </div>
 
