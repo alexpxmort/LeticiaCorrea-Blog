@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 
 const Page = () => {
 
+  const [recipe, setRecipe] = useState<Recipe | null>(null);
   const router = useRouter();
 
   
