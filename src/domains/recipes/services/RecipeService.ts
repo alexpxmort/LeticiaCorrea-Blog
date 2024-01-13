@@ -13,6 +13,10 @@ export class RecipeService {
     return this.recipeRepository.getAllRecipes();
   }
 
+  async getRecipe(recipeId: string): Promise<Recipe | null> {
+    return this.recipeRepository.getRecipe(recipeId);
+  }
+
   async createRecipe(data: Recipe): Promise<string> {
     return this.recipeRepository.createRecipe(data);
   }

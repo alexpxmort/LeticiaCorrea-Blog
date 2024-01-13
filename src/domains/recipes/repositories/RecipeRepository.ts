@@ -2,12 +2,24 @@ import { bucket, db } from '../../../infrastructure/firebase';
 import { Recipe } from '../entities/Recipe';
 export interface IRecipeRepository {
   getAllRecipes(): Promise<Recipe[]>;
+  getRecipe(recipeId: string): Promise<Recipe | null>;
   createRecipe(data: Recipe): Promise<string>;
   updateRecipe(id: string, data: Partial<Recipe>): Promise<void>;
   deleteRecipe(id: string): Promise<void>;
 }
 
 export class RecipeRepository implements IRecipeRepository {
+  async getRecipe(recipeId: string): Promise<Recipe | null> {
+    const snapshot = await db.collection(this.collectionName).doc(recipeId).get();
+
+    if (snapshot.exists) {
+      const data = snapshot.data() as Recipe;
+      return { id: snapshot.id, ...data };
+    } else {
+      // Se o documento com o ID fornecido não existir
+      return null;
+    }
+  }
   private collectionName = 'recipes';
   async getAllRecipes(): Promise<Recipe[]> {
     const snapshot = await db.collection(this.collectionName).get();

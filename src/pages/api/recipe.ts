@@ -35,6 +35,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const newRecipeId = await recipeService.createRecipe({
       name: fields?.['name']?.[0],
       description: fields?.['description']?.[0],
+      linkName: fields?.['linkName']?.[0],
       image: {
         buffer: imageBuffer,
         name: imageFile.originalFilename,

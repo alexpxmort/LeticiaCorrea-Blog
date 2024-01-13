@@ -8,5 +8,7 @@ export interface Recipe {
       }
     | any;
   name: string;
+  linkName: string;
   description: string;
+  sections?: any[];
 }

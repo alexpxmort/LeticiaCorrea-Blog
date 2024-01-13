@@ -12,13 +12,9 @@ import { Recipe } from 'src/domains/recipes/entities/Recipe';
 
 const schema = yup.object().shape({
   name: yup.string().required('O nome é obrigatório'),
+  linkName: yup.string().required('O nome do link é obrigatório'),
   description: yup.string().required('A descrição é obrigatória'),
-  image: yup
-    .mixed()
-    .required('A imagem é obrigatória')
-    .test('fileFormat', 'Formato de arquivo inválido', (value: any) => {
-      return value && ['image/jpeg', 'image/png', 'image/gif'].includes(value.type);
-    })
+  image: yup.mixed().required('A imagem é obrigatória')
 });
 
 const NewRecipePage = () => {
@@ -85,6 +81,8 @@ const NewRecipePage = () => {
             Upload
             <input type="file" id="uploadFile1" className="hidden" onChange={handleImageChange} />
           </label>
+          {errors.image && <p className="text-red-500 text-sm mt-1">{errors.image.message}</p>}
+
           {selectedImage && <p className="text-gray-500 mt-1">{selectedImage}</p>}
           <div className="mb-4">
             <label htmlFor="title" className="block text-sm font-medium text-gray-600">
@@ -97,6 +95,18 @@ const NewRecipePage = () => {
               className={`mt-1 p-2 w-full border rounded-md ${errors.name ? 'border-red-500' : ''}`}
             />
             {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
+          </div>
+          <div className="mb-4">
+            <label htmlFor="title" className="block text-sm font-medium text-gray-600">
+              Nome do Link
+            </label>
+            <input
+              type="text"
+              id="name"
+              {...register('linkName')}
+              className={`mt-1 p-2 w-full border rounded-md ${errors.name ? 'border-red-500' : ''}`}
+            />
+            {errors.linkName && <p className="text-red-500 text-sm mt-1">{errors.linkName.message}</p>}
           </div>
 
           <div className="mb-4">
@@ -113,6 +123,7 @@ const NewRecipePage = () => {
           </div>
 
           {message && <div className={`${message.type}-message mb-4`}>{message.content}</div>}
+
           <div className="flex items-center justify-between">
             <button disabled={loading} type="submit" className="bg-blue-500 text-white px-4 py-2 rounded-md">
               Salvar
@@ -123,6 +134,7 @@ const NewRecipePage = () => {
             </Link>
           </div>
         </form>
+
         {loading && <LoadingSpinner />}
       </div>
     </div>
