@@ -32,7 +32,7 @@ const [loadingGet, setLoadingGet] = useState(true);
     <RecipePostPage
       sections={recipe?.sections ?? []}
       recipe={{
-        title: recipe?.title,
+        title: recipe?.name,
         image: recipe?.image 
       }}
     />
