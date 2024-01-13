@@ -1,6 +1,6 @@
 // components/RecipeCard.js
 const RecipeCard = ({ recipe }) => {
-  const { id, name, image, description} = recipe;
+  const { id, name, image, description,sections} = recipe;
 
   return (
     <a href={`/receitas/${id}`} className="w-full max-w-screen-sm hover:no-underline">
@@ -14,7 +14,11 @@ const RecipeCard = ({ recipe }) => {
             {description}
           </p>
         </div>
-        <a href={`/receitas/${id}/sections/new`} >Completar cadastro</a>
+
+        {
+sections?.length >0 && <a href={`/receitas/${id}/sections/new`} >Completar cadastro</a>
+        }
+        
       </div>
     </a>
   );
