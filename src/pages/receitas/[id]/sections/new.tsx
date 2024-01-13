@@ -54,7 +54,7 @@ const NewRecipePage = () => {
   };
 
   const onSubmit = async () => {
-    const { id, ...rest } = recipe;
+    const { id = '', ...rest } = recipe;
 
     const updatedData = {
       ...rest,
