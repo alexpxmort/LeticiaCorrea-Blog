@@ -6,6 +6,7 @@ import { Recipe } from 'src/domains/recipes/entities/Recipe';
 import RecipePostPage from 'src/ui/components/RecipePostPage/RecipePostPage';
 import { recipeApi } from '@services/RecipeFetchApi';
 import { useRouter } from 'next/router';
+import LoadingSpinner from '@ui/components/Spinner';
 
 const Page = () => {
 const [loadingGet, setLoadingGet] = useState(true);
