@@ -52,9 +52,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const [fields] = await form.parse(req);
 
     const id= fields?.['id']?.[0]
-    const data = fields?.['data']?.[0]
+    const data = JSON.parse(fields?.['data']?.[0])
 
-      
+     console.log(data)
+    console.log(id)
     await recipeService.updateRecipe(id, data);
     res.status(200).end();
   } else if (req.method === 'DELETE') {
