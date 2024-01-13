@@ -12,6 +12,16 @@ const Page = () => {
   const [recipe, setRecipe] = useState<Recipe | null>(null);
   const router = useRouter();
 
+  const getRecipe = async (id:string | string[] ) => {
+    const result = await recipeApi.getRecipe(id);
+    setRecipe(result);
+    setLoadingGet(false);
+  };
+  useEffect(() => {
+    if (router?.query?.id) {
+      getRecipe(router?.query?.id);
+    }
+  }, [router.query]);
   
   return (
     <RecipePostPage
