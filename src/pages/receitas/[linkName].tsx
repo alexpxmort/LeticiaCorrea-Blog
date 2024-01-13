@@ -22,6 +22,10 @@ const [loadingGet, setLoadingGet] = useState(true);
       getRecipe(router?.query?.id);
     }
   }, [router.query]);
+
+  if (loadingGet) {
+    return <LoadingSpinner />;
+  }
   
   return (
     <RecipePostPage
