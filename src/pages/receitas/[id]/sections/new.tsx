@@ -54,9 +54,11 @@ const NewRecipePage = () => {
   };
 
   const onSubmit = async () => {
-    const { id = '', ...rest } = recipe;
 
-    const updatedData = {
+    if (recipe) {
+    const { id = '', ...rest } = recipe;
+    // Rest of your code
+       const updatedData = {
       ...rest,
       sections: sections.map(section => ({
         title: section.title,
@@ -83,6 +85,10 @@ const NewRecipePage = () => {
       setLoading(false);
       setMessage({ type: 'error', content: err.message });
     }
+    }
+    
+
+   
   };
 
   const handleInputChange = (sectionIndex, field, value) => {
