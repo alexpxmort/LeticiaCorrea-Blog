@@ -14,7 +14,7 @@ const RecipeCard = ({ recipe }) => {
             {description}
           </p>
         </div>
-        <a href={`/receitas/${id}`} >Completar cadastro</a>
+        <a href={`/receitas/${id}/sections/new`} >Completar cadastro</a>
       </div>
     </a>
   );
