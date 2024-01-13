@@ -54,19 +54,7 @@ const Home: React.FC<HomeProps> = ({ originalRecipes }) => {
 
 Home.defaultProps = {
   originalRecipes: [
-    // Initial recipes here
-    {
-      id: 'bolo-chocolate',
-      name: 'Bolo de Chocolate',
-      image: '/images/bolo-de-chocolate.jpeg',
-      description: 'Delicioso bolo de chocolate para satisfazer seus desejos.'
-    },
-    {
-      id: 'lasanha',
-      name: 'Lasanha',
-      image: '/images/lasanha.jpeg',
-      description: 'Deliciosa lasanha'
-    }
+    
   ]
 };
 
