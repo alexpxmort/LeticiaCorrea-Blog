@@ -16,7 +16,7 @@ const RecipeCard = ({ recipe }) => {
         </div>
 
         {
-sections?.length >0 && <a href={`/receitas/${id}/sections/new`} >Completar cadastro</a>
+sections?.length <=0 && <a href={`/receitas/${id}/sections/new`} >Completar cadastro</a>
         }
         
       </div>
