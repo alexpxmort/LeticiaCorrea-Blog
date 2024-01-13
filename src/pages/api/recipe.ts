@@ -46,7 +46,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       id: newRecipeId
     });
   } else if (req.method === 'PUT') {
-    const { id, data } = req.body;
+    
+
+      const form = formidable({});
+    const [fields, files] = await form.parse(req);
+
+    const id= fields?.['id']?.[0]
+    const data = fields?.['data']?.[0]
+
+      
     await recipeService.updateRecipe(id, data);
     res.status(200).end();
   } else if (req.method === 'DELETE') {
