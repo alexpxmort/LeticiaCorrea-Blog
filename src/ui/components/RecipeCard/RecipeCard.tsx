@@ -1,9 +1,9 @@
 // components/RecipeCard.js
 const RecipeCard = ({ recipe }) => {
-  const { id, name, image, description,linkName} = recipe;
+  const { id, name, image, description} = recipe;
 
   return (
-    <a href={`/receitas/${linkName ?? id}`} className="w-full max-w-screen-sm hover:no-underline">
+    <a href={`/receitas/${id}`} className="w-full max-w-screen-sm hover:no-underline">
       <div className=" border-1 border-gray-300 rounded-lg overflow-hidden shadow-md mb-8 mx-auto">
         <img src={image} alt={name} className="object-cover w-full h-48 md:h-64 lg:h-64 xl:h-64" />
         <div className="p-4">
