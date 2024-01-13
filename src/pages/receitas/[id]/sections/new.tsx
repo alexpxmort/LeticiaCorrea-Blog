@@ -83,6 +83,7 @@ const NewRecipePage = () => {
       }, 1800);
     } catch (err:any) {
       setLoading(false);
+      console.log(err);
       setMessage({ type: 'error', content: err.message });
     }
     }
