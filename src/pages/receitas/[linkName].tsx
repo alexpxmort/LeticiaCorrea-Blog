@@ -8,7 +8,7 @@ import { recipeApi } from '@services/RecipeFetchApi';
 import { useRouter } from 'next/router';
 
 const Page = () => {
-
+const [loadingGet, setLoadingGet] = useState(true);
   const [recipe, setRecipe] = useState<Recipe | null>(null);
   const router = useRouter();
 
