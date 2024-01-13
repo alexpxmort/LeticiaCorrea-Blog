@@ -30,10 +30,10 @@ const [loadingGet, setLoadingGet] = useState(true);
   
   return (
     <RecipePostPage
-      sections={sections}
+      sections={recipe?.sections ?? []}
       recipe={{
-        title: 'Bolo de Chocolate',
-        image: '/images/bolo-de-chocolate.jpeg'
+        title: recipe?.title,
+        image: recipe?.image 
       }}
     />
   );
