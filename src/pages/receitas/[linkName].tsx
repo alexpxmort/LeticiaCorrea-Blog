@@ -3,6 +3,7 @@
 // pages/recipes/bolo-de-chocolate.js
 import RecipePostPage from 'src/ui/components/RecipePostPage/RecipePostPage';
 import { recipeApi } from '@services/RecipeFetchApi';
+import { useRouter } from 'next/router';
 
 const Page = () => {
   return (
