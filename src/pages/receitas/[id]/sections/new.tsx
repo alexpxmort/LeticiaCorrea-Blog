@@ -7,7 +7,7 @@ import { recipeApi } from '@services/RecipeFetchApi';
 import LoadingSpinner from '@ui/components/Spinner';
 
 const NewRecipePage = () => {
-  const [sections, setSections] = useState([]);
+  const [sections, setSections] = useState<any[]>([]);
   const router = useRouter();
 
   const [loading, setLoading] = useState(false);
