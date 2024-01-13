@@ -6,6 +6,10 @@ import { recipeApi } from '@services/RecipeFetchApi';
 import { useRouter } from 'next/router';
 
 const Page = () => {
+
+  const router = useRouter();
+
+  
   return (
     <RecipePostPage
       sections={sections}
