@@ -1,6 +1,6 @@
 // components/RecipeCard.js
 const RecipeCard = ({ recipe }) => {
-  const { id, name, image, description,sections} = recipe;
+  const { id, name, image, description,sections = []} = recipe;
 
   return (
     <a href={`/receitas/${id}`} className="w-full max-w-screen-sm hover:no-underline">
