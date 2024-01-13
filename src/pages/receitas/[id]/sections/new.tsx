@@ -63,7 +63,7 @@ const NewRecipePage = () => {
       sections: sections.map(section => ({
         title: section.title,
         isList: section.isList,
-        ...(section.hasSubsections && {q
+        ...(section.hasSubsections && {
           subsections: section.subsections.map(subsection => ({
             title: subsection.title,
             isList:subsection.isList,
