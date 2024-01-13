@@ -2,7 +2,7 @@
 /* eslint-disable max-len */
 // pages/recipes/bolo-de-chocolate.js
 import RecipePostPage from 'src/ui/components/RecipePostPage/RecipePostPage';
-
+import { recipeApi } from '@services/RecipeFetchApi';
 
 const Page = () => {
   return (
