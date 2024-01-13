@@ -94,19 +94,7 @@ const NewRecipePage = () => {
     });
   };
 
-  const addListItem = sectionIndex => {
-    setSections(prevSections => {
-      const newSections = [...prevSections];
-
-      const value = document.getElementById(`item-${sectionIndex}`).value;
-
-      if (value) {
-        newSections[sectionIndex].listItems.push(value);
-      }
-
-      return newSections;
-    });
-  };
+  
 
   const handleSubsectionInputChange = (sectionIndex, subSectionIndex, field, value) => {
     setSections(prevSections => {
