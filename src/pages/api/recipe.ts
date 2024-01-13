@@ -49,7 +49,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     
 
       const form = formidable({});
-    const [fields, files] = await form.parse(req);
+    const [fields] = await form.parse(req);
 
     const id= fields?.['id']?.[0]
     const data = fields?.['data']?.[0]
