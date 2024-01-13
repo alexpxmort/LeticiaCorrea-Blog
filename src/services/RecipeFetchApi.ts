@@ -48,13 +48,10 @@ class RecipeFetchApi {
     // Adicione os campos do Recipe ao FormData
     
     formData.append("id",recipeId)
-    formData.append("data",recipeData)
+    formData.append("data",JSON.stringify(recipeData))
     
     const response = await fetch(`${this.baseUrl}`, {
       method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
       body: formData 
     });
 
