@@ -115,7 +115,7 @@ const NewRecipePage = () => {
     setSections(prevSections => {
       const newSections = [...prevSections];
 
-      const value = document.getElementById(`item-${sectionIndex}-${subSectionIndex}`).value;
+      const value = document.getElementById(`item-${sectionIndex}-${subSectionIndex}`)?.value;
 
       if (value) {
         newSections[sectionIndex].subsections[subSectionIndex].listItems.push(value);
