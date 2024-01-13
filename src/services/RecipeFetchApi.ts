@@ -43,12 +43,19 @@ class RecipeFetchApi {
   }
 
   async updateRecipe(recipeId: string, recipeData: Partial<Recipe>): Promise<void> {
+ const formData = new FormData();
+
+    // Adicione os campos do Recipe ao FormData
+    
+    formData.append("id",recipeId)
+    formData.append("data",recipeData)
+    
     const response = await fetch(`${this.baseUrl}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ id: recipeId, data: recipeData })
+      body: formData 
     });
 
     if (!response.ok) {
