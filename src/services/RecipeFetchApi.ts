@@ -12,7 +12,7 @@ class RecipeFetchApi {
     return response.json();
   }
 
-  async getRecipe(recipeId: string): Promise<Recipe | null> {
+  async getRecipe(recipeId: string | string[]    ): Promise<Recipe | null> {
     const response = await fetch(`/api/recipes/${recipeId}/get`);
     if (!response.ok) {
       throw new Error('Erro ao obter os Recipe da API');
