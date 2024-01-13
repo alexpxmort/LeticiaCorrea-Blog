@@ -62,11 +62,13 @@ const NewRecipePage = () => {
       ...rest,
       sections: sections.map(section => ({
         title: section.title,
+        isList: section.isList,
         ...(section.hasSubsections && {
           subsections: section.subsections.map(subsection => ({
             title: subsection.title,
             content: subsection.isList ? subsection.listItems : subsection.content
-          }))
+          })),
+          content:[]
         }),
         ...(!section.hasSubsections && { content: section.content })
       }))
