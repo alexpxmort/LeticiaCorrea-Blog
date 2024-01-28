@@ -1,5 +1,4 @@
 /* eslint-disable testing-library/await-async-utils */
-// cypress/integration/example.spec.js
 describe('Page /', () => {
   it('should render home page', () => {
     cy.visit('/');
@@ -8,6 +7,26 @@ describe('Page /', () => {
 
     cy.wait(1000);
 
-    cy.get('[data-testid="frango no leite de coco  e pimenta rosa"]').should('exist');
+    const card = cy.get('[data-testid="frango no leite de coco  e pimenta rosa"]');
+    card.should('exist');
+
+    card.should('have.attr', 'href').then(title => expect(title).to.match(/receitas/));
+  });
+});
+
+describe('Page /receitas/{receitaId}', () => {
+  it('should render home page', () => {
+    cy.visit('/');
+
+    cy.wait(1000);
+
+    const card = cy.get('[data-testid="frango no leite de coco  e pimenta rosa"]');
+    card.should('exist');
+
+    card.click();
+
+    cy.wait(200);
+
+    cy.get('[id="loading"]').should('exist');
   });
 });
