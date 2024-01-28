@@ -1,3 +1,4 @@
+/* eslint-disable testing-library/await-async-utils */
 // cypress/integration/example.spec.js
 describe('Page /', () => {
   it('should render home page', () => {
