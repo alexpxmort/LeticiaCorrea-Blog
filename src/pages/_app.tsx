@@ -22,4 +22,5 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   );
 };
 
+MyApp.displayName = "MyApp"
 export default MyApp;
