@@ -17,6 +17,7 @@ const config = {
     '!**/coverage/**',
     '!**/src/ui/styles/theme/**',
     '!**/postcss.config.js',
+    '!**/src/pages/_document.tsx',
     '!**/tailwind.config.js'
   ],
   moduleNameMapper: {
