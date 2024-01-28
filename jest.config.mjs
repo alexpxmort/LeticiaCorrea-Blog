@@ -9,7 +9,16 @@ const createJestConfig = nextJest({
 /** @type {import('jest').Config} */
 const config = {
   // Add more setup options before each test is run
-  collectCoverageFrom: ['**/*.{js,jsx,ts,tsx}', '!**/test/**'],
+  collectCoverageFrom: [
+    '**/*.{js,jsx,ts,tsx}',
+    '!**/test/**',
+    '!**/cypress/**',
+    '!**/.jest/**',
+    '!**/coverage/**',
+    '!**/src/ui/styles/theme/**',
+    '!**/postcss.config.js',
+    '!**/tailwind.config.js'
+  ],
   moduleNameMapper: {
     '@test/(.*)$': '<rootDir>/test/$1',
     '@pages/(.*)$': '<rootDir>/src/pages/$1',

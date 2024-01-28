@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
 import { theme } from '@ui/styles/theme';
 
-import AppLayout from 'src/ui/components/Layout/AppLayout';
+import AppLayout from '@ui/components/Layout/AppLayout';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   useEffect(() => {
