@@ -28,5 +28,9 @@ describe('Page /receitas/{receitaId}', () => {
     cy.wait(200);
 
     cy.get('[id="loading"]').should('exist');
+
+    cy.wait(500);
+
+    cy.contains('Ingredientes').should('exist');
   });
 });
