@@ -4,9 +4,15 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { theme } from '@ui/styles/theme';
 import MyApp from '@pages/_app';
 
-jest.mock('@ui/components/Layout/AppLayout', () => ({ children }) => (
-  <div data-testid="mocked-app-layout">{children}</div>
-));
+jest.mock('@ui/components/Layout/AppLayout', () => {
+  const MockedAppLayout = ({ children }) => (
+    <div data-testid="mocked-app-layout">{children}</div>
+  );
+
+  MockedAppLayout.displayName = 'MockedAppLayout';
+
+  return MockedAppLayout;
+});
 
 describe('MyApp', () => {
   test('renders MyApp component with ChakraProvider and AppLayout', () => {
