@@ -23,6 +23,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   } else if (req.method === 'POST') {
     const form = formidable({});
     const [fields, files] = await form.parse(req);
+    console.log(fields);
 
     const imageFile = files['image']?.[0];
 

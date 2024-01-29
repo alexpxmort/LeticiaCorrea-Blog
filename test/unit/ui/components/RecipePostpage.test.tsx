@@ -8,11 +8,19 @@ const sampleRecipe = {
   image: 'test-image.jpg'
 };
 
+const subSections = [
+  {
+    title: 'Section 1',
+    content: 'Content of section 1',
+    isList: false
+  }
+];
+
 const sampleSections = [
   {
     title: 'Section 1',
     content: 'Content of section 1',
-    subsections: [],
+    subsections: subSections,
     isList: false
   },
   {
