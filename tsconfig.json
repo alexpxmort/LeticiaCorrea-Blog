@@ -20,6 +20,7 @@
     "paths": {
       "@pages/*": ["src/pages/*"],
       "@components/*": ["src/components/*"],
+      "@domains/*": ["src/domains/*"],
       "@services/*": ["src/services/*"],
       "@models/*": ["src/models/*"],
       "@hooks/*": ["src/hooks/*"],

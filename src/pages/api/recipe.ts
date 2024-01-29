@@ -3,8 +3,8 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import formidable from 'formidable';
 import fs from 'fs';
 
-import { IRecipeRepository, RecipeRepository } from 'src/domains/recipes/repositories/RecipeRepository';
-import { RecipeService } from 'src/domains/recipes/services/RecipeService';
+import { IRecipeRepository, RecipeRepository } from '@domains/recipes/repositories/RecipeRepository';
+import { RecipeService } from '@domains/recipes/services/RecipeService';
 
 const recipeRepository: IRecipeRepository = new RecipeRepository();
 const recipeService = new RecipeService(recipeRepository);
@@ -46,16 +46,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       id: newRecipeId
     });
   } else if (req.method === 'PUT') {
-    
-
-      const form = formidable({});
+    const form = formidable({});
     const [fields] = await form.parse(req);
 
-    const id= fields?.['id']?.[0]
-    const data = JSON.parse(fields?.['data']?.[0])
+    const id = fields?.['id']?.[0];
+    const data = JSON.parse(fields?.['data']?.[0]);
 
-     console.log(data)
-    console.log(id)
+    console.log(data);
+    console.log(id);
     await recipeService.updateRecipe(id, data);
     res.status(200).end();
   } else if (req.method === 'DELETE') {

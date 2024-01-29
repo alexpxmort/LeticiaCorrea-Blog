@@ -22,7 +22,9 @@ const config = {
   ],
   moduleNameMapper: {
     '@test/(.*)$': '<rootDir>/test/$1',
+    '@domains/(.*)$': '<rootDir>/src/domains/$1',
     '@pages/(.*)$': '<rootDir>/src/pages/$1',
+    '@services/(.*)$': '<rootDir>/src/services/$1',
     '@ui/(.*)$': '<rootDir>/src/ui/$1',
     '@public/(.*)$': '<rootDir>/public/$1'
   },
