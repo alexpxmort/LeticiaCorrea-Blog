@@ -11,11 +11,15 @@ const sampleRecipe = {
 const sampleSections = [
   {
     title: 'Section 1',
-    content: 'Content of section 1'
+    content: 'Content of section 1',
+    subsections: [],
+    isList: false
   },
   {
     title: 'Section 2',
-    content: ['Item 1', 'Item 2']
+    content: ['Item 1', 'Item 2'],
+    subsections: [],
+    isList: true
   }
 ];
 

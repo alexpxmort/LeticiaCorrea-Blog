@@ -24,7 +24,7 @@
       "@services/*": ["src/services/*"],
       "@models/*": ["src/models/*"],
       "@hooks/*": ["src/hooks/*"],
-      "@utils/*": ["src/utils/*"],
+      "@helpers/*": ["src/helpers/*"],
       "@ui/*": ["./src/ui/*"],
       "react": ["./node_modules/@types/react"]
     }
