@@ -4,9 +4,8 @@ import type { AppProps } from 'next/app';
 import { useEffect } from 'react';
 
 import { ChakraProvider } from '@chakra-ui/react';
-import { theme } from '@ui/styles/theme';
-
 import AppLayout from '@ui/components/Layout/AppLayout';
+import { theme } from '@ui/styles/theme';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   useEffect(() => {
@@ -22,5 +21,5 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   );
 };
 
-MyApp.displayName = "MyApp"
+MyApp.displayName = 'MyApp';
 export default MyApp;

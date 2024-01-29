@@ -53,9 +53,7 @@ const Home: React.FC<HomeProps> = ({ originalRecipes }) => {
 };
 
 Home.defaultProps = {
-  originalRecipes: [
-    
-  ]
+  originalRecipes: []
 };
 
 export default Home;

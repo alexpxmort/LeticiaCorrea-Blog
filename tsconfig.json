@@ -19,6 +19,7 @@
     "noImplicitAny": false,
     "paths": {
       "@pages/*": ["src/pages/*"],
+      "@infra/*": ["src/infrastructure/*"],
       "@components/*": ["src/components/*"],
       "@domains/*": ["src/domains/*"],
       "@services/*": ["src/services/*"],

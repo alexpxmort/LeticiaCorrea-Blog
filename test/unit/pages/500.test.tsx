@@ -1,6 +1,7 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+
 import Custom500 from '@pages/500';
+import { render, screen } from '@testing-library/react';
 
 describe('Custom500', () => {
   test('renders 500 page', () => {

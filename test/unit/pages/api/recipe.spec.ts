@@ -1,11 +1,13 @@
 // handler.test.ts
-import handler from '@pages/api/recipe';
 import { NextApiRequest, NextApiResponse } from 'next';
+
+import handler from '@pages/api/recipe';
 
 jest.mock('fs');
 jest.mock('formidable', () => ({
   __esModule: true,
   default: jest.fn().mockImplementation(() => ({
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     parse: jest.fn((req, callback) => {
       return Promise.resolve([
         { id: ['123'], data: ['{"name":"test"}'], name: ['test'], description: ['test'], linkName: ['link test'] },

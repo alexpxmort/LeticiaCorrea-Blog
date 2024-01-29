@@ -1,7 +1,8 @@
 import React from 'react';
+
+import { ChakraProvider } from '@chakra-ui/react';
 import { render, screen } from '@testing-library/react';
 import RecipePostPage from '@ui/components/RecipePostPage/RecipePostPage';
-import { ChakraProvider } from '@chakra-ui/react';
 
 const sampleRecipe = {
   title: 'Test Recipe',

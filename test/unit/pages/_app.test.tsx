@@ -1,13 +1,12 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+
 import { ChakraProvider } from '@chakra-ui/react';
-import { theme } from '@ui/styles/theme';
 import MyApp from '@pages/_app';
+import { render, screen } from '@testing-library/react';
+import { theme } from '@ui/styles/theme';
 
 jest.mock('@ui/components/Layout/AppLayout', () => {
-  const MockedAppLayout = ({ children }) => (
-    <div data-testid="mocked-app-layout">{children}</div>
-  );
+  const MockedAppLayout = ({ children }) => <div data-testid="mocked-app-layout">{children}</div>;
 
   MockedAppLayout.displayName = 'MockedAppLayout';
 

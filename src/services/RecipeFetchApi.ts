@@ -12,7 +12,7 @@ class RecipeFetchApi {
     return response.json();
   }
 
-  async getRecipe(recipeId: string | string[]    ): Promise<Recipe | null> {
+  async getRecipe(recipeId: string | string[]): Promise<Recipe | null> {
     const response = await fetch(`/api/recipes/${recipeId}/get`);
     if (!response.ok) {
       throw new Error('Erro ao obter os Recipe da API');
@@ -43,16 +43,16 @@ class RecipeFetchApi {
   }
 
   async updateRecipe(recipeId: string, recipeData: Partial<Recipe>): Promise<void> {
- const formData = new FormData();
+    const formData = new FormData();
 
     // Adicione os campos do Recipe ao FormData
-    
-    formData.append("id",recipeId)
-    formData.append("data",JSON.stringify(recipeData))
-    
+
+    formData.append('id', recipeId);
+    formData.append('data', JSON.stringify(recipeData));
+
     const response = await fetch(`${this.baseUrl}`, {
       method: 'PUT',
-      body: formData 
+      body: formData
     });
 
     if (!response.ok) {

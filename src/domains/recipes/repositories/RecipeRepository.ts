@@ -11,7 +11,7 @@ export interface IRecipeRepository {
 export class RecipeRepository implements IRecipeRepository {
   async getRecipe(recipeId: string): Promise<Recipe | null> {
     const snapshot = await db.collection(this.collectionName).doc(recipeId).get();
-
+    console.log(snapshot);
     if (snapshot.exists) {
       const data = snapshot.data() as Recipe;
       return { id: snapshot.id, ...data };
@@ -46,7 +46,7 @@ export class RecipeRepository implements IRecipeRepository {
 
       // Obter a URL da imagem no Firebase Storage
       const [url] = await file.getSignedUrl({ action: 'read', expires: '03-09-2491' });
-
+      console.log(url);
       const updatedData = { ...data, image: url };
 
       const docRef = await db.collection(this.collectionName).add(updatedData);

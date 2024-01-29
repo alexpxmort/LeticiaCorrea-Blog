@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { render, fireEvent, screen } from '@testing-library/react';
 import Accordion from '@ui/components/Accordion';
 

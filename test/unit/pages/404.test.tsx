@@ -1,6 +1,7 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+
 import Custom404 from '@pages/404';
+import { render, screen } from '@testing-library/react';
 
 describe('Custom404', () => {
   test('renders 404 page', () => {

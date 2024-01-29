@@ -1,10 +1,12 @@
 // NewRecipePage.tsx
-import React, { useEffect, useState } from 'react';
-import Accordion from '@ui/components/Accordion';
-import { Recipe } from 'src/domains/recipes/entities/Recipe';
 import { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
+
 import { recipeApi } from '@services/RecipeFetchApi';
+import Accordion from '@ui/components/Accordion';
 import LoadingSpinner from '@ui/components/Spinner';
+
+import { Recipe } from 'src/domains/recipes/entities/Recipe';
 
 const NewRecipePage = () => {
   const [sections, setSections] = useState<any[]>([]);
@@ -29,7 +31,7 @@ const NewRecipePage = () => {
     ]);
   };
 
-  const getRecipe = async (id:string | string[] ) => {
+  const getRecipe = async (id: string | string[]) => {
     const result = await recipeApi.getRecipe(id);
     setRecipe(result);
     setLoadingGet(false);
@@ -54,45 +56,41 @@ const NewRecipePage = () => {
   };
 
   const onSubmit = async () => {
-
     if (recipe) {
-    const { id = '', ...rest } = recipe;
-    // Rest of your code
-       const updatedData = {
-      ...rest,
-      sections: sections.map(section => ({
-        title: section.title,
-        isList: section.isList,
-        ...(section.hasSubsections && {
-          subsections: section.subsections.map(subsection => ({
-            title: subsection.title,
-            isList:subsection.isList,
-            content: subsection.isList ? subsection.listItems : subsection.content
-          })),
-          content:[]
-        }),
-        ...(!section.hasSubsections && { content: section.content })
-      }))
-    };
+      const { id = '', ...rest } = recipe;
+      // Rest of your code
+      const updatedData = {
+        ...rest,
+        sections: sections.map(section => ({
+          title: section.title,
+          isList: section.isList,
+          ...(section.hasSubsections && {
+            subsections: section.subsections.map(subsection => ({
+              title: subsection.title,
+              isList: subsection.isList,
+              content: subsection.isList ? subsection.listItems : subsection.content
+            })),
+            content: []
+          }),
+          ...(!section.hasSubsections && { content: section.content })
+        }))
+      };
 
-    setLoading(true);
+      setLoading(true);
 
-    try {
-      await recipeApi.updateRecipe(id ?? '', updatedData);
-      setLoading(false);
-      setMessage({ type: 'success', content: 'Receita atualizada com sucesso!' });
-      setTimeout(() => {
-        setMessage(null);
-      }, 1800);
-    } catch (err:any) {
-      setLoading(false);
-      console.log(err);
-      setMessage({ type: 'error', content: err.message });
+      try {
+        await recipeApi.updateRecipe(id ?? '', updatedData);
+        setLoading(false);
+        setMessage({ type: 'success', content: 'Receita atualizada com sucesso!' });
+        setTimeout(() => {
+          setMessage(null);
+        }, 1800);
+      } catch (err: any) {
+        setLoading(false);
+        console.log(err);
+        setMessage({ type: 'error', content: err.message });
+      }
     }
-    }
-    
-
-   
   };
 
   const handleInputChange = (sectionIndex, field, value) => {
@@ -103,8 +101,6 @@ const NewRecipePage = () => {
       return newSections;
     });
   };
-
-  
 
   const handleSubsectionInputChange = (sectionIndex, subSectionIndex, field, value) => {
     setSections(prevSections => {
@@ -120,7 +116,6 @@ const NewRecipePage = () => {
       const newSections = [...prevSections];
 
       const value = (document.getElementById(`item-${sectionIndex}-${subSectionIndex}`) as HTMLInputElement)?.value;
-
 
       if (value) {
         newSections[sectionIndex].subsections[subSectionIndex].listItems.push(value);
@@ -165,8 +160,8 @@ const NewRecipePage = () => {
                   onChange={e => handleInputChange(sectionIndex, 'hasSubsections', e.target.value === 'true')}
                   className="mt-1 p-2 w-full border rounded-md"
                 >
-                  <option value={"true"}>Sim</option>
-                  <option value={"false"}>Não</option>
+                  <option value={'true'}>Sim</option>
+                  <option value={'false'}>Não</option>
                 </select>
               </div>
 
@@ -228,8 +223,8 @@ const NewRecipePage = () => {
                           }
                           className="mt-1 p-2 w-full border rounded-md"
                         >
-                          <option value={"true"}>Sim</option>
-                          <option value={"false"}>Não</option>
+                          <option value={'true'}>Sim</option>
+                          <option value={'false'}>Não</option>
                         </select>
                       </div>
 
